@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --njcp-gold: #CFAF36;
+  --njcp-black: #0A0A0A;
+  --njcp-white: #FFFFFF;
+  --njcp-red: #C22E2E;
+  
+  --background: var(--njcp-white);
+  --foreground: var(--njcp-black);
+  
+  --primary: var(--njcp-gold);
+  --primary-foreground: var(--njcp-black);
+  
+  --secondary: var(--njcp-black);
+  --secondary-foreground: var(--njcp-white);
+  
+  --accent: var(--njcp-red);
+  --accent-foreground: var(--njcp-white);
+  
+  --destructive: var(--njcp-red);
+  --destructive-foreground: var(--njcp-white);
+  
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  
+  --card: var(--njcp-white);
+  --card-foreground: var(--njcp-black);
+  
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: var(--njcp-gold);
+}
+
+.dark {
+  --background: var(--njcp-black);
+  --foreground: var(--njcp-white);
+  
+  --primary: var(--njcp-gold);
+  --primary-foreground: var(--njcp-black);
+  
+  --secondary: var(--njcp-white);
+  --secondary-foreground: var(--njcp-black);
+  
+  --accent: var(--njcp-red);
+  --accent-foreground: var(--njcp-white);
+  
+  --destructive: var(--njcp-red);
+  --destructive-foreground: var(--njcp-white);
+  
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  
+  --card: #1e293b;
+  --card-foreground: var(--njcp-white);
+  
+  --border: #334155;
+  --input: #334155;
+  --ring: var(--njcp-gold);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+.hero-section {
+  background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), url('/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, var(--njcp-gold), #E8D17D);
+}
+
+.sponsor-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sponsor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.team-card {
+  border-top: 4px solid var(--njcp-gold);
+}
+
+.athlete-stats {
+  background-color: rgba(207, 175, 54, 0.1);
+}
+
+.coach-card {
+  border-left: 4px solid var(--njcp-red);
+}

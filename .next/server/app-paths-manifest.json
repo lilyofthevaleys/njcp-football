@@ -1,0 +1,11 @@
+{
+  "/page": "app/page.js",
+  "/athletes/page": "app/athletes/page.js",
+  "/coaches/page": "app/coaches/page.js",
+  "/sponsors/page": "app/sponsors/page.js",
+  "/test-new/page": "app/test-new/page.js",
+  "/teams/page": "app/teams/page.js",
+  "/test/page": "app/test/page.js",
+  "/auth/signin/page": "app/auth/signin/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
+}
