@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --njcp-gold: #CFAF36;
+  /* Brand palette: red/black/gray */
+  --njcp-gold: #D62828; /* primary accent now red */
   --njcp-black: #0A0A0A;
   --njcp-white: #FFFFFF;
-  --njcp-red: #C22E2E;
+  --njcp-red: #9B1C1F; /* deeper supporting red */
   
   --background: var(--njcp-white);
   --foreground: var(--njcp-black);
@@ -66,7 +67,12 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    /* Gradient background with subtle red/gray accents */
+    background:
+      radial-gradient(1000px 500px at 10% 0%, rgba(214,40,40,0.12), transparent 60%),
+      radial-gradient(800px 400px at 90% 10%, rgba(82,82,91,0.16), transparent 55%),
+      linear-gradient(180deg, #0A0A0A 0%, #0E0E10 60%, #101114 100%);
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -80,9 +86,10 @@
   background-position: center;
 }
 
-.gold-gradient {
-  background: linear-gradient(135deg, var(--njcp-gold), #E8D17D);
-}
+  .gold-gradient {
+    /* Dark maroon accent overlay */
+    background: linear-gradient(135deg, rgba(155,28,31,0.65), rgba(155,28,31,0.12));
+  }
 
 .sponsor-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -103,4 +110,67 @@
 
 .coach-card {
   border-left: 4px solid var(--njcp-red);
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes bgPan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Utility classes for animations, fonts, and hovers */
+@layer utilities {
+  .font-body { font-family: var(--font-montserrat); }
+  .font-display { font-family: var(--font-oswald); }
+  .font-heading { font-family: var(--font-anton); }
+  .font-subheading { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+  .animate-fade-in-up { animation: fadeInUp 600ms ease-out both; }
+  .animate-float-slow { animation: floatSlow 6s ease-in-out infinite; }
+  .animate-background-pan { animation: bgPan 12s linear infinite; }
+
+  /* animation delays */
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+
+  /* link hover underline */
+  .hover-underline { position: relative; }
+  .hover-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: var(--njcp-gold); /* now red */
+    transition: width 200ms ease;
+  }
+  .hover-underline:hover::after { width: 100%; }
+
+  .hover-lift { transition: transform 200ms ease, box-shadow 200ms ease; }
+  .hover-lift:hover { transform: translateY(-3px) scale(1.02); }
+
+  .hover-glow { box-shadow: 0 0 0 0 rgba(214,40,40,0); transition: box-shadow 200ms ease; }
+  .hover-glow:hover { box-shadow: 0 8px 24px rgba(214,40,40,0.3); }
+
+  /* Enhanced dark maroon gradient for animated background accents */
+  .gold-gradient {
+    background:
+      radial-gradient(circle at 30% 50%, rgba(155,28,31,0.26), transparent 60%),
+      linear-gradient(90deg, rgba(155,28,31,0.18), transparent 70%);
+    background-size: 200% 200%;
+  }
 }

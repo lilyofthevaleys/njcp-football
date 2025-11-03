@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="80" viewBox="0 0 140 80" role="img" aria-label="Elite Training">
+  <rect width="140" height="80" rx="12" fill="#0f0f0f"/>
+  <rect x="22" y="22" width="28" height="36" rx="4" fill="#C9A227"/>
+  <rect x="52" y="22" width="28" height="36" rx="4" fill="#C9A227"/>
+  <rect x="82" y="22" width="28" height="36" rx="4" fill="#C9A227"/>
+  <text x="70" y="72" text-anchor="middle" font-family="system-ui" font-size="12" fill="#ffffff">TRAINING</text>
+</svg>

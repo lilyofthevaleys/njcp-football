@@ -70,31 +70,31 @@ export default function TeamsPage() {
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Banner */}
       <div className="bg-black text-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">NJCP <span className="text-gold">Teams</span></h1>
-          <p className="text-xl max-w-2xl">
+        <div className="container mx-auto px-4 animate-fade-in-up">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4"><span className="text-njcpRed">NJCP</span> <span className="text-white">Teams</span></h1>
+          <p className="font-subheading text-xl max-w-2xl animate-delay-100">
             Explore our competitive teams from across the nation, their rosters, stats, and schedules.
           </p>
         </div>
       </div>
       
       {/* Conference Tabs */}
-      <div className="bg-white shadow-md">
+      <div className="bg-white shadow-md animate-fade-in-up animate-delay-100">
         <div className="container mx-auto px-4">
           <div className="flex overflow-x-auto py-4 space-x-4">
-            <button className="px-6 py-2 text-gold border-b-2 border-gold font-medium">
+            <button className="px-6 py-2 text-gold border-b-2 border-gold font-medium hover-underline">
               All Conferences
             </button>
-            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium">
+            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium hover-underline">
               Eastern
             </button>
-            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium">
+            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium hover-underline">
               Western
             </button>
-            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium">
+            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium hover-underline">
               Northern
             </button>
-            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium">
+            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium hover-underline">
               Southern
             </button>
           </div>
@@ -102,14 +102,14 @@ export default function TeamsPage() {
       </div>
       
       {/* Teams Grid */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 animate-fade-in-up animate-delay-200">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teams.map((team) => (
-            <div key={team.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div key={team.id} className="bg-white rounded-lg shadow-md overflow-hidden hover-lift hover-glow ring-1 ring-njcpGold/10 hover:ring-njcpGold/30 transition-all">
               <div className="h-48 bg-gray-200"></div>
               <div className="p-5">
-                <h3 className="text-2xl font-bold">{team.name}</h3>
-                <p className="text-gray-600">{team.location}</p>
+                <h3 className="font-heading text-2xl font-bold">{team.name}</h3>
+                <p className="font-subheading text-gray-600">{team.location}</p>
                 
                 <div className="grid grid-cols-3 gap-2 my-4">
                   <div className="text-center">
@@ -128,12 +128,12 @@ export default function TeamsPage() {
                 
                 <div className="flex space-x-2">
                   <Link href={`/teams/${team.id}`} passHref className="flex-1">
-                    <Button className="w-full bg-gold text-black hover:bg-gold/90">
+                    <Button className="w-full bg-gold text-black hover:bg-gold/90 transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-njcpGold/30">
                       Team Profile
                     </Button>
                   </Link>
                   <Link href={`/teams/${team.id}/schedule`} passHref className="flex-1">
-                    <Button variant="outline" className="w-full border-gold text-gold hover:bg-gold/10">
+                    <Button variant="outline" className="w-full border-gold text-gold hover:bg-gold/10 transition-transform duration-300 hover:scale-105">
                       Schedule
                     </Button>
                   </Link>
@@ -147,7 +147,7 @@ export default function TeamsPage() {
       {/* Standings Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Conference Standings</h2>
+          <h2 className="font-heading text-3xl font-bold mb-8">Conference Standings</h2>
           
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white">
@@ -213,7 +213,7 @@ export default function TeamsPage() {
           </div>
           
           <div className="mt-8 text-center">
-            <Button className="bg-gold text-black hover:bg-gold/90">
+            <Button className="bg-gold text-black hover:bg-gold/90 transition-transform duration-300 hover:scale-105">
               View Complete Standings
             </Button>
           </div>

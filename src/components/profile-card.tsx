@@ -21,7 +21,7 @@ export function ProfileCard({ id, name, role, position, team, imageSrc, stats, c
   const profilePath = role === 'athlete' ? `/athletes/${id}` : `/coaches/${id}`;
   
   return (
-    <div className={cn("bg-njcpBlack rounded-lg border border-njcpGold/30 overflow-hidden transition-all hover:shadow-lg", className)}>
+    <div className={cn("bg-njcpBlack rounded-lg border border-njcpGold/30 overflow-hidden transition-all hover:shadow-lg hover-lift hover-glow ring-1 ring-njcpGold/10 hover:ring-njcpGold/30", className)}>
       <div className="relative h-48 bg-gradient-to-r from-njcpBlack to-gray-800">
         <Image
           src={imageSrc}
@@ -33,8 +33,8 @@ export function ProfileCard({ id, name, role, position, team, imageSrc, stats, c
       </div>
       
       <div className="p-5">
-        <h3 className="text-xl font-bold text-white">{name}</h3>
-        <div className="flex items-center text-sm text-gray-400 mt-1 mb-3">
+        <h3 className="font-heading text-xl font-bold text-white">{name}</h3>
+        <div className="font-subheading flex items-center text-sm text-gray-400 mt-1 mb-3">
           {position && <span className="mr-2">{position}</span>}
           {team && (
             <>
@@ -55,7 +55,7 @@ export function ProfileCard({ id, name, role, position, team, imageSrc, stats, c
           </div>
         )}
         
-        <Button asChild className="w-full mt-3 bg-njcpGold text-njcpBlack hover:bg-njcpGold/90">
+        <Button asChild className="w-full mt-3 bg-njcpGold text-njcpBlack hover:bg-njcpGold/90 transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-njcpGold/30">
           <Link href={profilePath}>View Profile</Link>
         </Button>
       </div>

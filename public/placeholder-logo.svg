@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="80" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder Logo">
+  <rect x="1" y="1" width="158" height="78" rx="10" fill="#101010" stroke="#C9A227" stroke-width="2"/>
+  <text x="80" y="48" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, sans-serif" font-size="20" font-weight="700" fill="#C9A227">LOGO</text>
+</svg>

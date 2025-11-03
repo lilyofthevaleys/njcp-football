@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="80" viewBox="0 0 140 80" role="img" aria-label="Victory Nutrition">
+  <rect width="140" height="80" rx="12" fill="#0f0f0f"/>
+  <path d="M20 60 L40 20 L60 60 L80 20 L100 60" stroke="#C9A227" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <text x="70" y="72" text-anchor="middle" font-family="system-ui" font-size="12" fill="#ffffff">NUTRITION</text>
+</svg>

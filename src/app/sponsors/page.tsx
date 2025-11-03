@@ -88,31 +88,31 @@ export default function SponsorsPage() {
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Banner */}
       <div className="bg-black text-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">NJCP <span className="text-gold">Sponsors</span></h1>
-          <p className="text-xl max-w-2xl">
+        <div className="container mx-auto px-4 animate-fade-in-up">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4"><span className="text-njcpRed">NJCP</span> <span className="text-white">Sponsors</span></h1>
+          <p className="font-subheading text-xl max-w-2xl animate-delay-100">
             Our valued partners who make the NJCP mission possible through their generous support.
           </p>
         </div>
       </div>
       
       {/* Tier Tabs */}
-      <div className="bg-white shadow-md">
+      <div className="bg-white shadow-md animate-fade-in-up animate-delay-100">
         <div className="container mx-auto px-4">
           <div className="flex overflow-x-auto py-4 space-x-4">
-            <button className="px-6 py-2 text-gold border-b-2 border-gold font-medium">
+            <button className="px-6 py-2 text-gold border-b-2 border-gold font-medium hover-underline">
               All Sponsors
             </button>
-            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium">
+            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium hover-underline">
               Platinum
             </button>
-            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium">
+            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium hover-underline">
               Gold
             </button>
-            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium">
+            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium hover-underline">
               Silver
             </button>
-            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium">
+            <button className="px-6 py-2 text-gray-600 hover:text-gold font-medium hover-underline">
               Bronze
             </button>
           </div>
@@ -120,16 +120,16 @@ export default function SponsorsPage() {
       </div>
       
       {/* Sponsors Grid */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 animate-fade-in-up animate-delay-200">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {sponsors.map((sponsor) => (
-            <div key={sponsor.id} className="sponsor-card bg-white rounded-lg shadow-md overflow-hidden">
+            <div key={sponsor.id} className="sponsor-card bg-white rounded-lg shadow-md overflow-hidden hover-lift hover-glow ring-1 ring-njcpGold/10 hover:ring-njcpGold/30 transition-all">
               <div className="h-40 bg-gray-100 flex items-center justify-center p-6">
-                <div className="text-2xl font-bold text-gray-400">{sponsor.name}</div>
+                <div className="font-heading text-2xl font-bold text-gray-400">{sponsor.name}</div>
               </div>
               <div className="p-5">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold">{sponsor.name}</h3>
+                  <h3 className="font-heading text-xl font-bold">{sponsor.name}</h3>
                   <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                     sponsor.tier === 'platinum' ? 'bg-gray-300 text-gray-800' :
                     sponsor.tier === 'gold' ? 'bg-gold/20 text-gold' :
@@ -140,7 +140,7 @@ export default function SponsorsPage() {
                   </span>
                 </div>
                 
-                <p className="text-gray-600 mb-4">{sponsor.description}</p>
+                <p className="font-subheading text-gray-600 mb-4">{sponsor.description}</p>
                 
                 <div className="grid grid-cols-3 gap-2 my-4">
                   <div className="text-center">
@@ -158,7 +158,7 @@ export default function SponsorsPage() {
                 </div>
                 
                 <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
-                  <Button className="w-full bg-gold text-black hover:bg-gold/90">
+                  <Button className="w-full bg-gold text-black hover:bg-gold/90 transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-njcpGold/30">
                     Visit Sponsor
                   </Button>
                 </a>
@@ -169,24 +169,24 @@ export default function SponsorsPage() {
       </div>
       
       {/* Become a Sponsor */}
-      <section className="py-16 bg-black text-white">
+      <section className="py-16 bg-black text-white animate-fade-in-up animate-delay-300">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-6">Become a <span className="text-gold">Sponsor</span></h2>
-              <p className="text-lg mb-6">
+              <h2 className="font-heading text-3xl font-bold mb-6">Become a <span className="text-gold">Sponsor</span></h2>
+              <p className="font-subheading text-lg mb-6">
                 Partner with NJCP to connect your brand with our nationwide audience of athletes, 
                 coaches, families, and college football fans.
               </p>
-              <p className="text-lg mb-6">
+              <p className="font-subheading text-lg mb-6">
                 Our tiered sponsorship packages offer customized visibility, engagement metrics, 
                 and ROI tracking to maximize your investment.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button className="bg-gold text-black hover:bg-gold/90">
+                <Button className="bg-gold text-black hover:bg-gold/90 transition-transform duration-300 hover:scale-105">
                   Sponsorship Packages
                 </Button>
-                <Button variant="outline" className="border-gold text-gold hover:bg-gold/10">
+                <Button variant="outline" className="border-gold text-gold hover:bg-gold/10 transition-transform duration-300 hover:scale-105">
                   Contact Us
                 </Button>
               </div>
@@ -194,22 +194,22 @@ export default function SponsorsPage() {
             
             <div className="md:w-1/2">
               <div className="bg-gray-900 p-8 rounded-lg">
-                <h3 className="text-xl font-bold mb-4">Sponsorship Tiers</h3>
+                <h3 className="font-heading text-xl font-bold mb-4">Sponsorship Tiers</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center p-3 bg-gray-800 rounded">
-                    <span className="font-medium">Platinum Partner</span>
+                    <span className="font-subheading font-medium">Platinum Partner</span>
                     <span className="text-gold">$25,000+</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-800 rounded">
-                    <span className="font-medium">Gold Partner</span>
+                    <span className="font-subheading font-medium">Gold Partner</span>
                     <span className="text-gold">$15,000+</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-800 rounded">
-                    <span className="font-medium">Silver Partner</span>
+                    <span className="font-subheading font-medium">Silver Partner</span>
                     <span className="text-gold">$7,500+</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-gray-800 rounded">
-                    <span className="font-medium">Bronze Partner</span>
+                    <span className="font-subheading font-medium">Bronze Partner</span>
                     <span className="text-gold">$2,500+</span>
                   </div>
                 </div>

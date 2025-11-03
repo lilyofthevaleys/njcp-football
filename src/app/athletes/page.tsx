@@ -110,16 +110,16 @@ export default function AthletesPage() {
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Banner */}
       <div className="bg-black text-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">NJCP <span className="text-gold">Athletes</span></h1>
-          <p className="text-xl max-w-2xl">
+        <div className="container mx-auto px-4 animate-fade-in-up">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4"><span className="text-njcpRed">NJCP</span> <span className="text-white">Athletes</span></h1>
+          <p className="font-subheading text-xl max-w-2xl animate-delay-100">
             Discover the rising stars of junior college football. Our athletes represent the best talent across the nation.
           </p>
         </div>
       </div>
       
       {/* Search and Filters */}
-      <div className="bg-white shadow-md">
+      <div className="bg-white shadow-md animate-fade-in-up animate-delay-100">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-grow">
@@ -127,7 +127,7 @@ export default function AthletesPage() {
                 <input
                   type="text"
                   placeholder="Search athletes..."
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold hover-lift"
                 />
                 <svg
                   className="absolute right-3 top-2.5 h-5 w-5 text-gray-400"
@@ -145,7 +145,7 @@ export default function AthletesPage() {
             </div>
             
             <div className="flex flex-col md:flex-row gap-4">
-              <select className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold">
+              <select className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold hover-lift">
                 {positions.map((position) => (
                   <option key={position} value={position}>
                     {position}
@@ -153,7 +153,7 @@ export default function AthletesPage() {
                 ))}
               </select>
               
-              <select className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold">
+              <select className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold hover-lift">
                 {teams.map((team) => (
                   <option key={team} value={team}>
                     {team}
@@ -161,7 +161,7 @@ export default function AthletesPage() {
                 ))}
               </select>
               
-              <Button className="bg-gold text-black hover:bg-gold/90">
+              <Button className="bg-gold text-black hover:bg-gold/90 transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-njcpGold/30">
                 Apply Filters
               </Button>
             </div>
@@ -170,14 +170,14 @@ export default function AthletesPage() {
       </div>
       
       {/* Athletes Grid */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 animate-fade-in-up animate-delay-200">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {athletes.map((athlete) => (
-            <div key={athlete.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div key={athlete.id} className="bg-white rounded-lg shadow-md overflow-hidden hover-lift hover-glow ring-1 ring-njcpGold/10 hover:ring-njcpGold/30 transition-all">
               <div className="h-48 bg-gray-200"></div>
               <div className="p-5">
-                <h3 className="text-xl font-bold">{athlete.name}</h3>
-                <p className="text-gray-600">{athlete.position} • {athlete.team}</p>
+                <h3 className="font-heading text-xl font-bold">{athlete.name}</h3>
+                <p className="font-subheading text-gray-600">{athlete.position} • {athlete.team}</p>
                 <div className="grid grid-cols-3 gap-2 my-4">
                   {athlete.stats.map((stat, index) => (
                     <div key={index} className="text-center">
@@ -187,7 +187,7 @@ export default function AthletesPage() {
                   ))}
                 </div>
                 <Link href={`/athletes/${athlete.id}`} passHref>
-                  <Button className="w-full bg-gold text-black hover:bg-gold/90">
+                  <Button className="w-full bg-gold text-black hover:bg-gold/90 transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-njcpGold/30">
                     View Profile
                   </Button>
                 </Link>
@@ -199,19 +199,19 @@ export default function AthletesPage() {
         {/* Pagination */}
         <div className="flex justify-center mt-12">
           <nav className="flex items-center space-x-2">
-            <Button variant="outline" className="border-gray-300 text-gray-700">
+            <Button variant="outline" className="border-gray-300 text-gray-700 hover-lift">
               Previous
             </Button>
-            <Button variant="outline" className="border-gold bg-gold text-black">
+            <Button variant="outline" className="border-gold bg-gold text-black hover-lift">
               1
             </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700">
+            <Button variant="outline" className="border-gray-300 text-gray-700 hover-lift">
               2
             </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700">
+            <Button variant="outline" className="border-gray-300 text-gray-700 hover-lift">
               3
             </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700">
+            <Button variant="outline" className="border-gray-300 text-gray-700 hover-lift">
               Next
             </Button>
           </nav>

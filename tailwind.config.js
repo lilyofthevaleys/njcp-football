@@ -17,10 +17,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        njcpGold: "#CFAF36",
-        njcpBlack: "#0A0A0A",
+        // Brand palette updated to red/black/gray
+        njcpGold: "#D62828", // primary accent (red)
+        njcpBlack: "#0A0A0A", // deep black
         njcpWhite: "#FFFFFF",
-        njcpRed: "#C22E2E",
+        njcpRed: "#9B1C1F", // secondary deeper red
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",

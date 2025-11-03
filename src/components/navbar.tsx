@@ -12,29 +12,29 @@ export function Navbar() {
     <header className="bg-njcpBlack text-white sticky top-0 z-50 shadow-md">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="font-bold text-2xl text-njcpGold">NJCP</div>
+          <div className="font-heading font-extrabold text-2xl tracking-wide text-njcpRed">NJCP</div>
         </Link>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/" className="hover:text-njcpGold transition-colors">
+          <Link href="/" className="hover:text-njcpRed transition-colors">
             Home
           </Link>
-          <Link href="/athletes" className="hover:text-njcpGold transition-colors">
+          <Link href="/athletes" className="hover:text-njcpRed transition-colors">
             Athletes
           </Link>
-          <Link href="/coaches" className="hover:text-njcpGold transition-colors">
+          <Link href="/coaches" className="hover:text-njcpRed transition-colors">
             Coaches
           </Link>
-          <Link href="/teams" className="hover:text-njcpGold transition-colors">
+          <Link href="/teams" className="hover:text-njcpRed transition-colors">
             Teams
           </Link>
-          <Link href="/sponsors" className="hover:text-njcpGold transition-colors">
+          <Link href="/sponsors" className="hover:text-njcpRed transition-colors">
             Sponsors
           </Link>
         </nav>
         
         <div className="flex items-center space-x-4">
-          <Button asChild variant="default" className="bg-njcpGold text-njcpBlack hover:bg-njcpGold/90">
+          <Button asChild variant="default" className="bg-njcpRed text-white hover:bg-njcpRed/90">
             <Link href="/auth/signin">Sign In</Link>
           </Button>
           <button 
@@ -59,40 +59,40 @@ export function Navbar() {
       
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-njcpBlack border-t border-njcpGold/20">
+        <div className="md:hidden bg-njcpBlack border-t border-njcpRed/20">
           <div className="container mx-auto px-4 py-3">
             <nav className="flex flex-col space-y-4">
               <Link 
                 href="/" 
-                className="py-2 hover:text-njcpGold transition-colors"
+                className="py-2 hover:text-njcpRed transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/athletes" 
-                className="py-2 hover:text-njcpGold transition-colors"
+                className="py-2 hover:text-njcpRed transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Athletes
               </Link>
               <Link 
                 href="/coaches" 
-                className="py-2 hover:text-njcpGold transition-colors"
+                className="py-2 hover:text-njcpRed transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Coaches
               </Link>
               <Link 
                 href="/teams" 
-                className="py-2 hover:text-njcpGold transition-colors"
+                className="py-2 hover:text-njcpRed transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Teams
               </Link>
               <Link 
                 href="/sponsors" 
-                className="py-2 hover:text-njcpGold transition-colors"
+                className="py-2 hover:text-njcpRed transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Sponsors
