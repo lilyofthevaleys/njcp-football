@@ -1,111 +1,23 @@
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { fetchSuuRoster } from '@/lib/suu-roster';
+import { athletes as localRoster } from '@/data/athletes';
 
-// Mock data for athletes
-const athletes = [
-  {
-    id: '1',
-    name: 'Marcus Johnson',
-    position: 'Quarterback',
-    team: 'Panthers',
-    imageSrc: '/placeholder-athlete.jpg',
-    stats: [
-      { label: 'TDs', value: 24 },
-      { label: 'Yards', value: 3200 },
-      { label: 'Comp.', value: '68%' },
-    ],
-  },
-  {
-    id: '2',
-    name: 'Jamal Williams',
-    position: 'Running Back',
-    team: 'Tigers',
-    imageSrc: '/placeholder-athlete.jpg',
-    stats: [
-      { label: 'TDs', value: 18 },
-      { label: 'Yards', value: 1450 },
-      { label: 'Avg', value: 5.8 },
-    ],
-  },
-  {
-    id: '3',
-    name: 'Tyler Rodriguez',
-    position: 'Wide Receiver',
-    team: 'Eagles',
-    imageSrc: '/placeholder-athlete.jpg',
-    stats: [
-      { label: 'TDs', value: 12 },
-      { label: 'Yards', value: 980 },
-      { label: 'Rec.', value: 62 },
-    ],
-  },
-  {
-    id: '4',
-    name: 'DeShawn Smith',
-    position: 'Linebacker',
-    team: 'Wolves',
-    imageSrc: '/placeholder-athlete.jpg',
-    stats: [
-      { label: 'Tackles', value: 86 },
-      { label: 'Sacks', value: 7.5 },
-      { label: 'INTs', value: 2 },
-    ],
-  },
-  {
-    id: '5',
-    name: 'Carlos Mendez',
-    position: 'Safety',
-    team: 'Sharks',
-    imageSrc: '/placeholder-athlete.jpg',
-    stats: [
-      { label: 'Tackles', value: 64 },
-      { label: 'INTs', value: 5 },
-      { label: 'PDs', value: 12 },
-    ],
-  },
-  {
-    id: '6',
-    name: 'Brandon Taylor',
-    position: 'Tight End',
-    team: 'Panthers',
-    imageSrc: '/placeholder-athlete.jpg',
-    stats: [
-      { label: 'TDs', value: 8 },
-      { label: 'Yards', value: 620 },
-      { label: 'Rec.', value: 45 },
-    ],
-  },
-];
-
-// Position options for filter
-const positions = [
-  'All Positions',
-  'Quarterback',
-  'Running Back',
-  'Wide Receiver',
-  'Tight End',
-  'Offensive Line',
-  'Defensive Line',
-  'Linebacker',
-  'Cornerback',
-  'Safety',
-  'Special Teams',
-];
-
-// Team options for filter
-const teams = [
-  'All Teams',
-  'Panthers',
-  'Tigers',
-  'Eagles',
-  'Wolves',
-  'Sharks',
-  'Bears',
-  'Lions',
-  'Falcons',
-];
-
-export default function AthletesPage() {
+export default async function AthletesPage() {
+  // Try live SUU roster first; fallback to local data if it fails
+  let roster = localRoster;
+  try {
+    const suu = await fetchSuuRoster();
+    if (suu.length) roster = suu;
+  } catch (e) {
+    // keep local roster
+  }
+  // Show a dedicated Shane Carr card linking to the static page and avoid duplicates
+  const normalize = (s?: string) => (s || '').toLowerCase().replace(/[^a-z\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  const isShaneCarr = (name?: string) => {
+    const n = normalize(name);
+    return n.includes('shane') && n.includes('carr');
+  };
+  const rosterWithoutShane = roster.filter((a) => !isShaneCarr(a.name));
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Banner */}
@@ -113,108 +25,52 @@ export default function AthletesPage() {
         <div className="container mx-auto px-4 animate-fade-in-up">
           <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4"><span className="text-njcpRed">NJCP</span> <span className="text-white">Athletes</span></h1>
           <p className="font-subheading text-xl max-w-2xl animate-delay-100">
-            Discover the rising stars of junior college football. Our athletes represent the best talent across the nation.
+            Explore the roster of standout junior college players across the nation.
           </p>
         </div>
       </div>
-      
-      {/* Search and Filters */}
-      <div className="bg-white shadow-md animate-fade-in-up animate-delay-100">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-grow">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search athletes..."
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold hover-lift"
-                />
-                <svg
-                  className="absolute right-3 top-2.5 h-5 w-5 text-gray-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-            
-            <div className="flex flex-col md:flex-row gap-4">
-              <select className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold hover-lift">
-                {positions.map((position) => (
-                  <option key={position} value={position}>
-                    {position}
-                  </option>
-                ))}
-              </select>
-              
-              <select className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold hover-lift">
-                {teams.map((team) => (
-                  <option key={team} value={team}>
-                    {team}
-                  </option>
-                ))}
-              </select>
-              
-              <Button className="bg-gold text-black hover:bg-gold/90 transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-njcpGold/30">
-                Apply Filters
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Athletes Grid */}
+
+      {/* Roster Grid */}
       <div className="container mx-auto px-4 py-12 animate-fade-in-up animate-delay-200">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {athletes.map((athlete) => (
-            <div key={athlete.id} className="bg-white rounded-lg shadow-md overflow-hidden hover-lift hover-glow ring-1 ring-njcpGold/10 hover:ring-njcpGold/30 transition-all">
-              <div className="h-48 bg-gray-200"></div>
-              <div className="p-5">
-                <h3 className="font-heading text-xl font-bold">{athlete.name}</h3>
-                <p className="font-subheading text-gray-600">{athlete.position} • {athlete.team}</p>
-                <div className="grid grid-cols-3 gap-2 my-4">
-                  {athlete.stats.map((stat, index) => (
-                    <div key={index} className="text-center">
-                      <div className="text-lg font-bold text-gold">{stat.value}</div>
-                      <div className="text-xs text-gray-500">{stat.label}</div>
-                    </div>
-                  ))}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {/* Dedicated Shane Carr card linking to static bio page */}
+          <Link href="/athletes/shane-carr" className="group">
+            <article className="roster-card bg-njcpBlack/80 border border-white/10 rounded-xl overflow-hidden">
+              <div className="relative aspect-[3/4] bg-gradient-to-b from-gray-800 to-black">
+                <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between text-white">
+                  <span className="text-xs bg-njcpRed/80 px-2 py-1 rounded">#2</span>
+                  <span className="text-xs bg-black/60 px-2 py-1 rounded">WR • Southern Utah Thunderbirds</span>
                 </div>
-                <Link href={`/athletes/${athlete.id}`} passHref>
-                  <Button className="w-full bg-gold text-black hover:bg-gold/90 transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-njcpGold/30">
-                    View Profile
-                  </Button>
-                </Link>
               </div>
-            </div>
+              <div className="p-4 bg-black/50">
+                <h3 className="font-heading text-white text-lg leading-tight">Shane Carr</h3>
+                <p className="text-sm text-gray-300">WR • Southern Utah Thunderbirds</p>
+              </div>
+            </article>
+          </Link>
+          {rosterWithoutShane.map((athlete) => (
+            <Link key={athlete.id} href={`/athletes/${athlete.id}`} className="group">
+              <article className="roster-card bg-njcpBlack/80 border border-white/10 rounded-xl overflow-hidden">
+                {/* Removed athlete thumbnails as requested; keep a simple header block */}
+                <div className="relative aspect-[3/4] bg-gradient-to-b from-gray-800 to-black">
+                  <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between text-white">
+                    <span className="text-xs bg-njcpRed/80 px-2 py-1 rounded">#{athlete.jersey ?? '—'}</span>
+                    <span className="text-xs bg-black/60 px-2 py-1 rounded">
+                      {athlete.position} • {athlete.team}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-4 bg-black/50">
+                  <h3 className="font-heading text-white text-lg leading-tight">
+                    {athlete.name}
+                  </h3>
+                  <p className="text-sm text-gray-300">
+                    {athlete.position} • {athlete.team}
+                  </p>
+                </div>
+              </article>
+            </Link>
           ))}
-        </div>
-        
-        {/* Pagination */}
-        <div className="flex justify-center mt-12">
-          <nav className="flex items-center space-x-2">
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover-lift">
-              Previous
-            </Button>
-            <Button variant="outline" className="border-gold bg-gold text-black hover-lift">
-              1
-            </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover-lift">
-              2
-            </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover-lift">
-              3
-            </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover-lift">
-              Next
-            </Button>
-          </nav>
         </div>
       </div>
     </div>
