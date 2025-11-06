@@ -14,6 +14,8 @@ const coaches = [
   { id: '6', name: 'Coach Lisa Rodriguez', position: 'Head Coach', team: 'Bears', imageSrc: '/placeholder-coach.jpg', experience: '9 years', record: '78-35', championships: 2 },
 ];
 
+import { supportStaff } from '@/data/support-staff';
+
 export default function CoachesPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -42,9 +44,12 @@ export default function CoachesPage() {
         </div>
       </section>
 
-      {/* Coaches Grid */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* 2025 Football Coaching Staff */}
+      <section className="container mx-auto px-4 pt-12">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold">2025 Football Coaching Staff</h2>
+        <div className="mt-2 border-t-4 border-njcpRed"></div>
+        {/* Coaches Grid */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {coaches.map((c) => (
             <div key={c.id} className="bg-white rounded-lg shadow-sm border p-6">
               <div className="flex items-center gap-4 mb-4">
@@ -61,6 +66,31 @@ export default function CoachesPage() {
               </div>
               <div className="mt-4">
                 <Link href={`/coaches/${c.id}`} className="text-njcpBlack">
+                  <Button variant="outline" className="hover:bg-njcpGold/10">View Profile</Button>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 2025 Football Support Staff */}
+      <section className="container mx-auto px-4 pb-12">
+        <h2 className="mt-12 font-heading text-2xl md:text-3xl font-bold">2025 Football Support Staff</h2>
+        <div className="mt-2 border-t-4 border-njcpRed"></div>
+        <p className="mt-4 text-sm text-gray-700">Staff Directory Members By Category/Department</p>
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {supportStaff.map((s) => (
+            <div key={s.slug} className="bg-white rounded-lg shadow-sm border p-5">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="font-semibold">{s.name}</h3>
+                  <p className="text-sm text-gray-600">{s.role}</p>
+                </div>
+              </div>
+              <div className="mt-4 h-24 rounded-md bg-gray-100" aria-label="Placeholder window" />
+              <div className="mt-4">
+                <Link href={`/coaches/support/${s.slug}`} className="text-njcpBlack">
                   <Button variant="outline" className="hover:bg-njcpGold/10">View Profile</Button>
                 </Link>
               </div>
