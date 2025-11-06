@@ -30,6 +30,19 @@ export default async function AthletesPage() {
         </div>
       </div>
 
+      {/* CTA Apply Section (moved below banner) */}
+      <section className="bg-white border-b">
+        <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div className="flex-1">
+            <h2 className="text-2xl md:text-3xl font-bold text-njcpBlack">Ready to transform your potential into performance?</h2>
+            <p className="mt-2 text-gray-700">Submit your application to join NJCP.</p>
+          </div>
+          <Link href="/athletes/apply" className="inline-block">
+            <span className="inline-flex items-center rounded-md bg-njcpRed px-5 py-3 text-white font-semibold shadow hover:bg-njcpRed/90">Apply Now</span>
+          </Link>
+        </div>
+      </section>
+
       {/* Roster Grid */}
       <div className="container mx-auto px-4 py-12 animate-fade-in-up animate-delay-200">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
